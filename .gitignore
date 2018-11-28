@@ -1,0 +1,7 @@
+*.aux
+*.bcf
+*.log
+*.out
+/plan.pdf
+*.run.xml
+*.toc
