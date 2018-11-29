@@ -1,5 +1,6 @@
 \documentclass[msc,lith,english]{liuthesis}
 \include{settings}
+
 \department{Institutionen för datavetenskap}
 \departmentenglish{Department of Computer and Information Science}
 \departmentshort{IDA}
@@ -38,9 +39,10 @@ If any problems are not successfully shown to be improved in this manner, can a 
 Can any useful hypotheses be drawn from the findings, such as if specific subclasses of problems are particularly resistant? Given time, can these be effectively mapped onto other quantum algorithms/methods, such as quantum annealing?
 
 \subsection{Purpose}
-The benefit in knowing the answers to these questions are numerous. They chiefly pertain to improving calculability of otherwise difficult-to-approach problems by potentially as much as doubling the input sizes for which they are solvable, given future advances in construction of quantum computers; potentially the only such option if both BQP (quantum-computer polynomial) and N (deterministic turing machine-polynomial) complexity classes are separate from NP. There is also a hope to better the understanding of interrelations between problems, particularly within the NP-complete set. Lastly, the project aims to increase interest in quantum computation and algorithmics, by presenting uses outside of solving BQP, should a delimitation on the class ever be shown.
+The benefit in knowing the answers to these questions are numerous. They chiefly pertain to improving calculability of otherwise difficult-to-approach problems by potentially as much as doubling the input sizes for which they are solvable, given future advances in construction of quantum computers; potentially the only such option if both BQP (quantum-computer polynomial) and P (deterministic turing machine-polynomial) complexity classes are separate from NP. There is also a hope to better the understanding of interrelations between problems, particularly within the NP-complete set. Lastly, the project aims to increase interest in quantum computation and algorithmics, by presenting uses outside of solving BQP, should a delimitation on the class ever be shown.
 
 \section{Initial Approach}
 Firstly, a delimitation to a reasonable number of target problems must be established, proposedly via discussion with the assigned supervisor. A selection must then be made as to which problems specifically to target. The initial approach will be to aim for a set of representative problems first and foremost. Inclusion of different variations and relaxations of the same problem, such as testing for finding both hamilton paths and cycles, will be avoided. Only a particular class or type of problem tested should yield particular results, further problems within the class may be tested as well. For potentially proving any lower bounds, we will attempt whatever approaches appear applicable to the relevant reduction, to show a growth in problem input size by less than a factor of 2, at which point the Grover Search algorithm no longer improves the calculability of the problem. It is worth noting that any NP-hard problem approached will be solvable by the proposed method, since all problems in NP can be reduced to any NP-complete problem, thus also to SAT-problems to which Grover’s algorithm can be applied. Furthermore, no actual quantum computation or simulation need be performed for the sake of the thesis; the work to be done is bounded to classical problem reduction and analysis.
 
+\printbibliography
 \end{document}
