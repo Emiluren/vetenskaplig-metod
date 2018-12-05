@@ -1,13 +1,13 @@
 \documentclass[msc,lith,english]{liuthesis}
 \include{settings}
 
-\department{Institutionen f√∂r datavetenskap}
+\department{Institutionen fˆr datavetenskap}
 \departmentenglish{Department of Computer and Information Science}
 \departmentshort{IDA}
 
 \supervisor{Min handledare}
 \examiner{Min examinator}
-\titleenglish{Analysing applicability and usefulness of Grover Search for common NP-hard problems}
+\titleenglish{Analysing applicability and usefulness of Grover Search for common NP-complete problems}
 %\subtitleenglish{}
 \thesissubject{Datateknik}
 
@@ -15,34 +15,32 @@
 \currentyearthesisnumber{001}
 \dateofpublication{2019-05-08}
 
-\author{\parbox{\textwidth}{Emil Segerb√§ck\\ Olav √ñvreb√∂}}
+\author{\parbox{\textwidth}{Emil Segerb‰ck\\ Olav ÷vrebˆ}}
 
 \begin{document}
 TDDD89 Thesis Proposal for group EMISE935, OLAOV121
 
 \section{Problem Description}
 \subsection{Background}
-NP denotes the class of problems solvable in polynomial time given a non-deterministic turing machine. NP-hard problems are the hardest problems in NP, requiring super-polynomial time to execute on a deterministic computer. NP-hard will in this text also refer, largely though not exclusively, to NP-complete problems. NP-complete is the class of problems into which all of NP can be reduced in polynomial time. Reduce means to re-write as another problem using some algorithm.
+NP (non-deterministic Polynomial) denotes the class of decision problems solvable in polynomial time given a non-deterministic Turing machine (NDTM). These come paired with a functional problem, forming the class FNP (functional non-deterministic), with the NP problem typically asking whether its FNP equivalent has a solution. Analogous to solving a problem with a NDTM, a NP-problem's solution may be validated in polynomial time on a deterministic Turing machine such as a classical computer, given the paired FNP-solution. Furthermore, a problem is described as NP-hard if it can be shown that any problem in NP can be reduced into it, with at most a polynomial change in problem size. Importantly, NP-hard problems which themselves belong to NP, called NP-complete, hold both these traits, being verifiable in polynomial time on a classical computer and presenting a worst-case computational difficulty for the whole of NP. \cite{CCAMA}
 
-Grover‚Äôs Search algorithm is a quantum algorithm for which solves SAT-problems (boolean constraint satisfaction) and related FNP (functional analogue to NP) problems with a quadratic reduction in complexity relative to trivial classical solutions. The most encompassing of SAT are NP-complete. The ‚Äúsearch‚Äù phrasing relates to the applicability in ‚Äòsearching‚Äô lists already converted into a quantum circuit, which it achieves in sub-linear time. While this polynomial speed-up is not enough to make NP-hard problems solvable in polynomial time, it may as much as double the computable input size from what is achievable in classical computing.
+Groverís Search algorithm is a quantum algorithm which solves SAT-problems (boolean constraint satisfaction problems). It also solves their FNP equivalent that is, producing a set of boolean values which satisfy the constraints, if at all possible, with a quadratic reduction in complexity relative iterating over proposed FNP-solutions and attempting to validate these.\cite{QCQI}\cite{CCAMA} The most encompassing of SAT-problems are NP-complete. The ìsearchî phrasing relates to the applicability in searching lists already converted into a quantum circuit, which it achieves in $\mathcal{O}(\sqrt{N})$ time for $N$ elements. In brevity this is achieved by repeated application of a circuit based on the relevant validation algorithm, shifting the potential value space of an array of superposition qbits into the set of outcomes that fulfil the validation, if the set is non-empty. This is a variation of what is called Amplitude Amplification. While this polynomial speed-up is not enough to provide NP-problems a solution in polynomial time, it may as much as double the computable input size from what is achievable in classical computing.\cite{EIQC}
 
-\subsection{Proposed thesis questions}
-The proposed thesis tackles the following questions/tasks:
-What are an appropriate set of example problems to analyse with regard to the following questions?
+In this thesis we approach the applicability of Grover's Search in solving a wide variety of NP-complete problems. In particular, we look at the achievable growth in problem size during reduction to SAT-format for problems representative of different categories of problems. There are several benefits to bettering the understanding of such growth, and relations between different NP-complete problems. They chiefly pertain to improving the calculability of otherwise difficult-to-approach problems by as much as doubling the input sizes for which they are solvable, given future advances in construction of quantum computers; potentially the only such option if both BQP (quantum-computer polynomial) and P (deterministic Turing machine-polynomial) complexity classes are separate from NP, as is a widely held but unproven belief. There is also a hope to better the understanding of interrelations between problems, particularly within the NP-complete set. Lastly, the project aims to increase interest in quantum computation and quantum algorithms, by presenting uses outside of solving BQP problems, should a delimitation on the class ever be proven.
 
-What, if any, NP-hard problems cannot be solved via reduction into an appropriate form followed by application of Grover‚Äôs search, such that a polynomial speed-up is achieved relative to classical algorithms?
-
-Can a lower bound be found for these speed-ups?
-
-If any problems are not successfully shown to be improved in this manner, can a lower bound for the reduction be produced, proving Grover‚Äôs Search cannot provide an improved solution?
-
-Can any useful hypotheses be drawn from the findings, such as if specific subclasses of problems are particularly resistant? Given time, can these be effectively mapped onto other quantum algorithms/methods, such as quantum annealing?
-
-\subsection{Purpose}
-The benefit in knowing the answers to these questions are numerous. They chiefly pertain to improving calculability of otherwise difficult-to-approach problems by potentially as much as doubling the input sizes for which they are solvable, given future advances in construction of quantum computers; potentially the only such option if both BQP (quantum-computer polynomial) and P (deterministic turing machine-polynomial) complexity classes are separate from NP. There is also a hope to better the understanding of interrelations between problems, particularly within the NP-complete set. Lastly, the project aims to increase interest in quantum computation and algorithmics, by presenting uses outside of solving BQP, should a delimitation on the class ever be shown.
+\subsection{Research questions}
+The thesis tackles the following questions/tasks:
+\begin{itemize}
+    \item What are an appropriate set of example problems to analyse with regard to the following questions?
+    \item For the problems treated, what worst-case growth in size can we establish during reduction into a Grover-searchable format?
+    \item For which of these is the growth sufficiently small that applying Grover's Search to them produces a useful speedup relative both to best-known classical algorithms, and to the trivial solution?
+    \begin{itemize}
+        \item Can we prove a lower-bound in growth for any problems where we fail to produce a sufficient reduction, and so prove the approach pointless?
+    \end{itemize}
+\end{itemize}
 
 \section{Initial Approach}
-Firstly, a delimitation to a reasonable number of target problems must be established, proposedly via discussion with the assigned supervisor. A selection must then be made as to which problems specifically to target. The initial approach will be to aim for a set of representative problems first and foremost. Inclusion of different variations and relaxations of the same problem, such as testing for finding both hamilton paths and cycles, will be avoided. Only a particular class or type of problem tested should yield particular results, further problems within the class may be tested as well. For potentially proving any lower bounds, we will attempt whatever approaches appear applicable to the relevant reduction, to show a growth in problem input size by less than a factor of 2, at which point the Grover Search algorithm no longer improves the calculability of the problem. It is worth noting that any NP-hard problem approached will be solvable by the proposed method, since all problems in NP can be reduced to any NP-complete problem, thus also to SAT-problems to which Grover‚Äôs algorithm can be applied. Furthermore, no actual quantum computation or simulation need be performed for the sake of the thesis; the work to be done is bounded to classical problem reduction and analysis.
+Firstly, a delimitation to a reasonable number of target problems must be established, proposedly via discussion with the assigned supervisor. A selection must then be made as to which problems specifically to target. The initial approach will be to aim for a set of representative problems first and foremost. Inclusion of different variations and relaxations of the same problem, such as testing for finding both Hamilton paths and cycles, will be avoided. Only a particular class or type of problem tested should yield particular results, further problems within the class may be tested as well. For potentially proving any lower bounds, we will attempt whatever approaches appear applicable to the relevant reduction, to show a growth in problem input size by less than a factor of 2, at which point the Grover Search algorithm no longer improves the calculability of the problem. It is worth noting that any NP-hard problem approached will be solvable by the proposed method, since all problems in NP can be reduced to any NP-complete problem, thus also to SAT-problems to which Groverís algorithm can be applied. Furthermore, no actual quantum computation or simulation need be performed for the sake of the thesis; the work to be done is bounded to classical problem reduction and analysis.
 
 \printbibliography
 \end{document}
