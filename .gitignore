@@ -5,3 +5,6 @@
 /plan.pdf
 *.run.xml
 *.toc
+*.bbl
+*.blg
+*.synctex.gz
