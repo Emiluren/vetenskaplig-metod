@@ -40,18 +40,36 @@ The thesis tackles the following questions/tasks:
 \end{itemize}
 
 \section{Related work}
+Here we collect a number of related papers. These have been selected because they either deal with reduction of problems into SAT, as is appropriate for our thesis, or because they somehow apply Grover Search to provide a speedup over classical algorithms, similar to what we aim to do but with narrower focus and greater depth.
+
 \subsection{Quantum search algorithm tailored to clause satisfaction problems}
 Avatar Tulsi has done some work on an alternative search algorithm to the selective phase inversion of the solution state in Grover's algorithm. The algorithm is specifically tailored to clause satisfaction problems and relaxes the requirement of coupling between computation circuits for each binary function that is part of the clause. Because of this it has a potential to save computational resources required to implement the oracle transformation in Grover's search.\cite{QuantumCSPSearch}
 
 \subsection{Translation of Algorithmic Descriptions of Discrete Functions to SAT with Applications to Cryptanalysis Problems}
 Transalg is a software system meant to be used for SAT-based cryptanalysis. To implement Transalg methods to translate algorithmic descriptions of discrete functions to SAT are used.\cite{Transalg}
 
-\chapter{Initial Approach}
+\subsection{Quantum Mechanics helps in searching for a needle in a haystack
+}
+In this paper Lov K. Grover presents his approach to Quantum Search, both on a conceptual and a practical level, detailing the algorithm and providing aid in visualising the operation via analogues to geometrical operations. The algorithm, as he puts it, require fundamentally simple circuitry compared to many other quantum algorithms, and provides a noteworthy improvement over classical search. His algorithm fundamentally creates an equal-probability outcome superposition of entangled qbits, and amplifies the probability of a desired outcome by process of repeated phase-shift of desired outcome probabilities and inversion about their average amplitude. Lastly, it is shown precisely how the amplitude amplification scales with input, $\mathcal{O}(\frac{1}{\sqrt{N}})$ for a search-space of size $N$, from which the computational complexity of the search algorithm, $\mathcal{O}(\sqrt{N})$, follows.\cite{QMHSNH}
+
+\subsection{Quantum Walk Speedup for Backtracking Algorithms}
+Ashley Montanaro engages in reworking and refining quantum walk algorithms, based on nestled Grover Search across partially revealed search spaces in search trees. This is presented as a polynomial speedup in solving chiefly conjunctive normal form constraint satisfaction problems (CNF CSP:s) and general graph search problems, by integration into classical backtracking algorithms like DPLL. Particularly, the paper also specifies relaxed cases where an exponential speed-up is achievable over classical algorithms in the average case.\cite{QWSBA}
+
+
+\chapter{Method}
 Firstly, a delimitation to a reasonable number of target problems must be established, proposedly via discussion with the assigned supervisor. A selection must then be made as to which problems specifically to target. The initial approach will be to aim for a set of representative problems first and foremost. Inclusion of different variations and relaxations of the same problem, such as testing for finding both Hamilton paths and cycles, will be avoided. Only a particular class or type of problem tested should yield particular results, further problems within the class may be tested as well. For potentially proving any lower bounds, we will attempt whatever approaches appear applicable to the relevant reduction, to show a growth in problem input size by less than a factor of 2, at which point the Grover Search algorithm no longer improves the calculability of the problem. It is worth noting that any NP-hard problem approached will be solvable by the proposed method, since all problems in NP can be reduced to any NP-complete problem, thus also to SAT-problems to which Grover’s algorithm can be applied. Furthermore, no actual quantum computation or simulation need be performed for the sake of the thesis; the work to be done is bounded to classical problem reduction and analysis.
 
 \appendix
 \chapter{Changes}
-We have simplified some sentence structure based on feedback. The section ``Related Work'' has been added.
+\begin{itemize}
+    \item Sentences have been simplified for legibility.
+    \item The section ``Related Work'' has been added.
+    \item Explanations of various technical terms have been clarified or expanded upon.
+    \item Parts of the introduction have been rewritten and restructured to better engage the reader.
+    \item Research questions have been rephrased for clarity, and narrowed down for a clearer scope.
+    \item Citations have been added.
+    \item Chapter ``Initial approach'' has been renamed Method, and is subject to further change later into the project.
+\end{itemize}
 
 \printbibliography
 \end{document}
